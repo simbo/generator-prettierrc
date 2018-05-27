@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '10'
+- '8'
+- '6'
+env:
+  global:
+    secure: LYHIO3V8WpNonIFa347Q5BojQTKM4vsdGbOV2KaXIg6+rzQdBd5wdhboGygtUPuIPUWCG85QFPdcpDpfh8lf1KavtpiuOr1GzDk/JgQRx9UsGeyTlN3wvnhCgCwuxNIKHkkRH11ChRecKoO0Ad3eS2u+/M6/aGKTGmHBYMamokgV8v/xmKo41WFvkbwb0zU4SYpiPFv2R32EAEmrUZanK2qAMrBg4wWIZ9Al2Bn1Eep0w5sQonyr8GXY7XgCDJi9prMqNFVDafc839+NwrTWqHtBMdgSiueupeFYXutiVOXPuM1xWlEQC/dcaO/UnCN42ODPUMWmtHbV9fEnMPq8og0hG73Q4x8dD1xnRBf9R4aImic9wnUjQ+B3t9OoZU7A2gKaJSmhFkh/O6a3iiqR26BUjpeI3JcqwnGPRTqQpPFH0Os2t2GbfwlwdIEHT8Ibd8OAEcAQukeCpKBdiNYLVBwOIJgvRiR1CVd5ngFDJPBvym4k+XPzA7DJtfl/cQeGgOak++bvAPyqIo5AdpP805bMsjqUXLj5FvULmaUSotS9qkT2Ub5Pvw4TYYLJuINCix5PwzEsRz55nkWv/hkeDfMLhvq+i8fnE52d7k6UiCo1T6cBbMlvFLZwDQtveUJNdlkOXc9cCTyZctpo2D0JrUr/PSHVryOPPV8hXtf3kC8=
+script: yarn test
+jobs:
+  include:
+  - stage: release
+    node_js: '8'
+    install: echo "Skipping install..."
+    script: echo "Skipping script..."
+    deploy:
+    - provider: npm
+      email: simbo@simbo.de
+      api_key: "${NPM_API_KEY}"
+      on:
+        tags: true
