@@ -12,7 +12,7 @@ module.exports = class extends Generator {
     });
   }
 
-  initializing() {
+  writing() {
     this.fs.copy(
       this.templatePath('.prettierrc'),
       this.destinationPath(this.options.generateInto, '.prettierrc')
